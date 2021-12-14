@@ -1,0 +1,44 @@
+<p>customer works!</p>
+<table class="table table-bordered">
+  <tr>
+    <td></td>
+    <td></td>
+    <td colspan="3">
+      <input type="text" placeholder="Enter name to search..." [(ngModel)]="searchtext">
+    </td>
+  </tr>
+  <tr>
+    <th>Id</th>
+    <th>Name</th>
+    <th>Age</th>
+    <th>Gender</th>
+    <th>Balance</th>
+  </tr>
+  <tr *ngFor = "let d of customer|searchcustomer:searchtext">
+    <td>{{d.id}}</td>
+    <td>{{d.name |nameformate:d.gender|uppercase}}</td>
+    <td>{{d.age }}</td>
+    <td>{{d.gender|genderformate|lowercase}}</td>
+    <td >{{d.balance | currency}}</td>
+  </tr>
+</table>
+<button class="btn btn-info" (click)="Handle()">{{btntext}}</button>
+<div *ngIf="islogin;then signin;else signup"></div>
+<ng-template #signin>
+  <app-signin></app-signin>
+</ng-template>
+<ng-template #signup>
+<app-signup></app-signup>
+</ng-template>
+
+<div [ngSwitch]="gcode">
+  <h2 *ngSwitchCase=1>Hola</h2>
+  <h2 *ngSwitchCase=2>Aag</h2>
+  <h2 *ngSwitchCase=3>Ka Gola</h2>
+  <h2 *ngSwitchDefault>Warna ola</h2>
+</div>
+<p appChangecolor>Lorem ipsum dolor sit amet
+  consectetur adipisicing elit. Consectetur
+  consequatur adipisci eum omnis sunt voluptatum,
+  quisquam eaque veritatis et rem, at neque voluptate ipsa quia. Doloribus
+   nisi quo facere voluptate, velit accusantium?</p>
